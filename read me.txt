@@ -1,0 +1,46 @@
+How to install Truffle
+**********************
+1. First make sure that Node.js is installed in your PC.
+2. Go to command Line tool e.g. git Bash
+3. Run Command: npm install -g truffle
+***********************************
+How to initialize a truffle project
+***********************************
+1. Go to your directory folder and open git bash.
+2. Run Command: truffle init
+
+********************************
+How to install ethereum testrpc
+********************************
+1. Open git bash
+2. Run Command: npm install -g ganache-cli
+
+********************************
+How to start testrpc
+*******************************
+1. Open git bash
+2. Run Command: ganache-cli
+3. Copy the HD wallet mnemnic to start testrpc again with same wallet and accounts
+
+**************************************************************************
+How to start testrpc with same accounts everytime like first time you start
+***************************************************************************
+1. Run command: ganache-cli -m "copied mnemonic"
+
+**************************************************************************
+How to add a contract in truffle contracts folder
+***************************************************************************
+1. Copy the YourContract.sol file in the contracts folder of your truffle project.
+2. Go to Migrations folder and open "2_deploy_contractss.js" file.
+3. Add the contract as artifacts and deployer like the following code:
+......................................................................
+var YourContract= artifacts.require("./YourContract.sol");
+
+
+
+module.exports = function(deployer) {
+  
+deployer.deploy(YourContract);
+
+};
+.......................................................................
