@@ -1,7 +1,7 @@
 var fixedSupplyToken = artifacts.require("./FixedSupplyToken.sol");
 var exchange = artifacts.require("./Exchange.sol");
 
-contract('Exchange Order Tests', function (accounts) {
+contract('Test Exchange of Limit Order', function (accounts) {
     before(function() {
         var instanceExchange;
         var instanceToken;

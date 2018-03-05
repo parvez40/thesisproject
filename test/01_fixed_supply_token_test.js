@@ -1,7 +1,7 @@
 var fixedSupplyToken = artifacts.require("./FixedSupplyToken.sol");
 
-contract('MyToken', function(accounts) {
-    it("first account should own all tokens", function() {
+contract('Token', function(accounts) {
+    it("Owner account should own all tokens", function() {
         var _totalSupply;
         var myTokenInstance;
         return fixedSupplyToken.deployed().then(function(instance) {
@@ -15,7 +15,7 @@ contract('MyToken', function(accounts) {
         });
     });
 
-    it("second account should own no tokens", function() {
+    it("other account should own no tokens", function() {
         var myTokenInstance;
         return fixedSupplyToken.deployed().then(function(instance) {
             myTokenInstance = instance;
@@ -27,7 +27,7 @@ contract('MyToken', function(accounts) {
 
 
 
-    it("should send token correctly", function() {
+    it("token should send or receive correctly between accounts", function() {
         var token;
 
         //    Get initial balances of first and second account.

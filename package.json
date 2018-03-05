@@ -7,6 +7,10 @@
     "build": "webpack",
     "dev": "webpack-dev-server"
   },
+  "scripts": {
+    "test": "docker run -d -p 8545:8545 --name testrpc wbuchwalter/testrpc  && truffle test",
+    "posttest": "docker stop testrpc"
+  },
   "author": "Douglas von Kohorn",
   "license": "MIT",
   "devDependencies": {
@@ -46,5 +50,9 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "jquery": "^3.2.1"
+  }
+  "dependencies": {
+    "truffle": "^2.1.1",
+    "web3": "^0.18.2"
   }
 }
