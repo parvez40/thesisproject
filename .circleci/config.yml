@@ -4,7 +4,13 @@ jobs:
   build:
     docker:
       - image: wbuchwalter/testrpc
+      machine:
+  services:
+    - docker
+  node:
+    version: 7.4.0
     steps:
+    
       - checkout
       - run:
          command: docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
