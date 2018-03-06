@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: dwbuchwalter/testrpc
+      - image: wbuchwalter/testrpc
     steps:
       - checkout
       - run:
