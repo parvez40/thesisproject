@@ -6,8 +6,7 @@ jobs:
       -image: wbuchwalter/testrpc
   steps:
     - checkout
-      - run: 
-      command: docker build -t wbuchwalter/testrpc
+      - run: docker build -t wbuchwalter/testrpc
       
      # - run: 
     #command: docker push wbuchwalter/testrpc
