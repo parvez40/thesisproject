@@ -5,9 +5,7 @@ machine:
   node:
     version: 7.4.0
 jobs:
-  build:
-    docker:
-      - image: 
+  build: 
     steps:
       - checkout
       - docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
