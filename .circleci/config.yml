@@ -7,10 +7,6 @@ jobs:
     steps:
       - checkout
       - run:
-         command1: docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
+         command: docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
       
-        command2: docker run -d -p 8545:8545 -v $(pwd):/app ethereum/client-go --datadir /app/geth/data --networkid 20170123 --rpc --rpcaddr "0.0.0.0" --verbosity 5
-      
-         command3: node scripts/waitForEthSync.js
-      
-        command4: truffle migrate
+    
