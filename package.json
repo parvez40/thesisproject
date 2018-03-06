@@ -6,10 +6,13 @@
     "lint": "eslint ./",
     "build": "webpack",
     "dev": "webpack-dev-server"
-  },
-  "scripts": {
+    "migrate": "truffle migrate",
     "test": "docker run -d -p 8545:8545 --name testrpc wbuchwalter/testrpc  && truffle test",
     "posttest": "docker stop testrpc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/parvez40/thesisproject"
   },
   "author": "Douglas von Kohorn",
   "license": "MIT",
@@ -50,8 +53,6 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "jquery": "^3.2.1"
-  }
-  "dependencies": {
     "truffle": "^2.1.1",
     "web3": "^0.18.2"
   }
