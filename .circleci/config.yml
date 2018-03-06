@@ -2,7 +2,8 @@
 version: 2
 jobs:
   build:
-  machine: true
+  docker:
+  -image: buchwalter/testrpc
     steps:
     
       - checkout
