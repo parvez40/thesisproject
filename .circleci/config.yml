@@ -3,13 +3,15 @@ version: 2
 jobs:
   build:
   docker:
-  -image: wbuchwalter/testrpc
-    steps:
-    
-      - checkout
-      - run:docker build -t wbuchwalter/testrpc
-      - run:docker push wbuchwalter/testrpc
-      - run:ddocker run --rm -d --name testrpc -p 8545 desmart/testrpc:latest
-      - run:docker run --rm -v "${PWD}:/usr/src/app" --link testrpc -e "RPC_HOST=testrpc" desmart/truffle:latest test
+      -image: wbuchwalter/testrpc
+  steps:
+    - checkout
+      - run: docker build -t wbuchwalter/testrpc
+      
+      - run: docker push wbuchwalter/testrpc
+      
+      - run: docker run --rm -d --name testrpc -p 8545 desmart/testrpc:latest
+      
+      - run: docker run --rm -v "${PWD}:/usr/src/app" --link testrpc -e "RPC_HOST=testrpc" desmart/truffle:latest test
       
     
