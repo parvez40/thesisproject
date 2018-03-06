@@ -1,17 +1,20 @@
-version:1
-machine:
-  services:
-    - docker
-  node:
-    version: 7.4.0
+version: 2
+jobs:
+  build:
+    docker:
+      - image: wbuchwalter/testrpc
+    steps:
+      - checkout
+      - run:
+          name: genesis
+          command: docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
+      - run:
+          name: testrpc
+          command: docker run -d -p 8545:8545 -v $(pwd):/app ethereum/client-go --datadir /app/geth/data --networkid 20170123 --rpc  --rpcaddr "0.0.0.0" --verbosity 5
 
-deployment:
-  production:
-    branch: master
-    commands:
-      - docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
-      - docker run -d -p 8545:8545 -v $(pwd):/app ethereum/client-go --datadir /app/geth/data --networkid 20170123 --rpc --unlock 0x322ba17d251afdb6d84fd288b5aef518208cccb9 --password /app/password --rpcaddr "0.0.0.0" --verbosity 5
-      - node scripts/waitForEthSync.js
-      - truffle migrate
-
-    
+      - run:
+          name: node sync
+          command: node scripts/waitForEthSync.js
+      - run:
+          name: migrate
+          command: truffle migrate
