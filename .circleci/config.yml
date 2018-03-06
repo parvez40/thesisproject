@@ -3,9 +3,6 @@ version: 2
 jobs:
   build:
   machine: true
-    docker:
-      - image: wbuchwalter/testrpc
-     
     steps:
     
       - checkout
