@@ -6,7 +6,7 @@ jobs:
       -image: wbuchwalter/testrpc
   steps:
     - checkout
-      - run: docker build -t wbuchwalter/testrpc
+      - run: docker run --rm -d --name testrpc -p 8545 desmart/testrpc:latest
       
      # - run: 
     #command: docker push wbuchwalter/testrpc
