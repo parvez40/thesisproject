@@ -4,33 +4,17 @@ jobs:
     docker:
       - image: wbuchwalter/testrpc
     steps:
-    
       - checkout
-      
       - run:
-        name: Install Docker Compose
-        command: |
-        curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-        chmod +x ~/docker-compose
-        sudo mv ~/docker-compose /usr/local/bin/docker-compose
-        
-       - run:
-          name: Start container and verify it's working
-          command: |
+            name: Install Docker Compose
+            command: |
+            curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - run:
+            name: Start container and verify it's working
+            command: |
             set -x
             docker-compose up -d
             docker run --network container:contacts \
-              appropriate/curl --retry 10 --retry-delay 1 --retry-connrefused http://localhost:8080/contacts/test
-       - run:
-          name: genesis
-          command: docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
-      - run:
-          name: testrpc
-          command: docker run -d -p 8545:8545 -v $(pwd):/app ethereum/client-go --datadir /app/geth/data --networkid 20170123 --rpc  --rpcaddr "0.0.0.0" --verbosity 5
-
-      - run:
-          name: node sync
-          command: node scripts/waitForEthSync.js
-      - run:
-          name: migrate
-          command: truffle migrate
+            appropriate/curl --retry 10 --retry-delay 1 --retry-connrefused http://localhost:8080/contacts/test
