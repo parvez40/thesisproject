@@ -6,7 +6,8 @@ machine:
     
 jobs:
 buid:
-docker: https://hub.docker.com/r/parvez40/truffle/
+docker: 
+-image: https://hub.docker.com/r/parvez40/truffle/
 run:
       - docker run --rm -d --name testrpc -p 8545 desmart/testrpc:latest
       - docker run --rm -v "${PWD}:/usr/src/app" --link testrpc -e "RPC_HOST=testrpc" desmart/truffle:latest test
