@@ -4,15 +4,14 @@ jobs:
   build:
     docker:
       - image: wbuchwalter/testrpc
-      machine:
-  services:
-    - docker
-  node:
-    version: 7.4.0
+     machine: true
     steps:
     
       - checkout
       - run:
-         command: docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
+      docker build -t wbuchwalter/testrpc
+      docker push wbuchwalter/testrpc
+      ddocker run --rm -d --name testrpc -p 8545 desmart/testrpc:latest
+      docker run --rm -v "${PWD}:/usr/src/app" --link testrpc -e "RPC_HOST=testrpc" desmart/truffle:latest test
       
     
