@@ -6,12 +6,16 @@ jobs:
       -image: wbuchwalter/testrpc
   steps:
     - checkout
-      - run: docker build -t wbuchwalter/testrpc
+      - run: 
+      command: docker build -t wbuchwalter/testrpc
       
-      - run: docker push wbuchwalter/testrpc
+     # - run: 
+    #command: docker push wbuchwalter/testrpc
       
-      - run: docker run --rm -d --name testrpc -p 8545 desmart/testrpc:latest
+      #- run: 
+      #command:docker run --rm -d --name testrpc -p 8545 desmart/testrpc:latest
       
-      - run: docker run --rm -v "${PWD}:/usr/src/app" --link testrpc -e "RPC_HOST=testrpc" desmart/truffle:latest test
+      #- run: 
+      #command: docker run --rm -v "${PWD}:/usr/src/app" --link testrpc -e "RPC_HOST=testrpc" desmart/truffle:latest test
       
     
