@@ -5,6 +5,8 @@ machine:
     version: 7.4.0
     
 jobs:
+buid:
+docker: https://hub.docker.com/r/parvez40/truffle/
 deployment:
   production:
     branch: master
