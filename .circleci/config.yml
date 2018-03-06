@@ -7,7 +7,7 @@ machine:
 jobs:
   build:
     docker:
-      - image: https://hub.docker.com/r/wbuchwalter/testrpc/
+      - image: 
     steps:
       - checkout
       - docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
