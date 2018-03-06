@@ -6,7 +6,7 @@ machine:
     version: 7.4.0
 jobs:
   build: 
-    docker:
+    docker: docker pull parvez40/truffle
     steps:
       - checkout
       - docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
