@@ -19,6 +19,9 @@ jobs:
             #name: docker service stop
             #command: sudo service docker start
       - run:
+            name: docker service setup
+            command: setup_remote_docker
+      - run:
             name: docker daemon running
             command: sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
       #- run:
