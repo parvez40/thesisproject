@@ -32,10 +32,10 @@ jobs:
       #      command: truffle migrate
       - run: 
            name: start test rpc
-           command: docker run --rm -d --name testrpc -p 8545 desmart/testrpc:latest
-     - run: 
+           command: sudo docker run --rm -d --name testrpc -p 8545 desmart/testrpc:latest
+      - run: 
            name: start test
-           command: docker run --rm -v "${PWD}:/usr/src/app" --link testrpc -e "RPC_HOST=testrpc" desmart/truffle:latest test
+           command: sudo docker run --rm -v "${PWD}:/usr/src/app" --link testrpc -e "RPC_HOST=testrpc" desmart/truffle:latest test
       
       
             
