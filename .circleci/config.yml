@@ -8,5 +8,5 @@ jobs:
       - checkout
       - run:
             name: genesis
-            command: docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
+            command: sudo docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
             
