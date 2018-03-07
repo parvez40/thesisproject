@@ -3,8 +3,9 @@ jobs:
   build:
     docker:
       - image: circleci/node
-      - image: wbuchwalter/testrpc
-      - image: trufflesuite/ganache-cli
+     # - image: wbuchwalter/testrpc
+      - image: desmart/truffle:3.2
+      
     steps:
       - checkout
      # - run: sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
@@ -30,7 +31,11 @@ jobs:
       #      name: migrate
       #      command: truffle migrate
       - run: 
-            name: test
-            command: npm test
+           name: start test rpc
+           command: docker run --rm -d --name testrpc -p 8545 desmart/testrpc:latest
+     - run: 
+           name: start test
+           command: docker run --rm -v "${PWD}:/usr/src/app" --link testrpc -e "RPC_HOST=testrpc" desmart/truffle:latest test
+      
       
             
