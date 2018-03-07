@@ -2,10 +2,11 @@ version: 2
 jobs:
   build:
     docker:
+      - image: circleci/node
       - image: wbuchwalter/testrpc
     steps:
       - checkout
       - run:
-            name: Install Docker Compose
-            command: curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
+            name: genesis
+            command: docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
             
