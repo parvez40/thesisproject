@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/node
       - image: wbuchwalter/testrpc
-      -image: trufflesuite/ganache-cli
+      - image: trufflesuite/ganache-cli
     steps:
       - checkout
      # - run: sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
