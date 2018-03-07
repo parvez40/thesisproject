@@ -8,6 +8,7 @@ jobs:
       
     steps:
       - checkout
+      - setup_remote_docker
       - run:
              name: docker group
              command: sudo groupadd docker
@@ -18,9 +19,7 @@ jobs:
       #- run:
             #name: docker service stop
             #command: sudo service docker start
-      - run:
-            name: docker service setup
-            command: setup_remote_docker
+      
       - run:
             name: docker daemon running
             command: sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
