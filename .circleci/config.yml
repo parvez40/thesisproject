@@ -8,10 +8,16 @@ jobs:
       
     steps:
       - checkout
+      - run:
+             name: docker group
+             command: sudo groupadd docker
+      - run:
+             name: docker group user
+             command: sudo usermod -aG docker $(whoami)
      
-      #- run:
-      #      name: docker service
-      #      command: sudo docker service stop
+      - run:
+            name: docker service
+            command: sudo docker service stop
       - run:
             name: docker daemon running
             command: sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
