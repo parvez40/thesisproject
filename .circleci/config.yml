@@ -14,20 +14,23 @@ jobs:
       - run:
             name: docker daemon running
             command: sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
-      - run:
-            name: docker info
-            command: sudo docker info
-      - run: 
-            name: genesis
-            command: sudo docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
-      - run: 
-            name: rpc
-            command: sudo docker run -d -p 8545:8545 -v $(pwd):/app ethereum/client-go --datadir /app/geth/data --networkid 20170123 --rpc  --rpcaddr "0.0.0.0" --verbosity 5
-      - run: 
-            name: nodesync
-            command: node scripts/waitForEthSync.js
+     # - run:
+     #       name: docker info
+     #       command: sudo docker info
+     # - run: 
+     #       name: genesis
+     #       command: sudo docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
+     # - run: 
+     #       name: rpc
+      #      command: sudo docker run -d -p 8545:8545 -v $(pwd):/app ethereum/client-go --datadir /app/geth/data --networkid 20170123 --rpc  --rpcaddr "0.0.0.0" --verbosity 5
+     # - run: 
+     #       name: nodesync
+      #      command: node scripts/waitForEthSync.js
       - run: 
             name: migrate
             command: truffle migrate
+      - run: 
+            name: test
+            command: npm test
       
             
