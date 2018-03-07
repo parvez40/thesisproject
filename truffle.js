@@ -3,12 +3,14 @@ module.exports = {
     development: {
       host: "localhost",
       port: 8545,
-      network_id: "*" // Match any network id
+      network_id: "*", // Match any network id
+      gas: 6000000
     },
       rpc: {
           host: "localhost",
           port: 8545,
-          network_id: "*" // Match any network id
+          network_id: "*", // Match any network id
+          gas: 6000000
       },
       privateNet: {
           host: "localhost",
