@@ -22,7 +22,8 @@ jobs:
       
       - run:
             name: docker daemon running
-            command: sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
+            #command: sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
+            command: sudo dockerd -D --tls=true --tlscert=/var/docker/server.pem --tlskey=/var/docker/serverkey.pem -H tcp://192.168.59.3:2376
       #- run:
       #      name: docker info
       #      command: sudo docker info
