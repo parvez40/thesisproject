@@ -7,7 +7,7 @@
     "build": "webpack",
     "dev": "webpack-dev-server",
     "migrate": "truffle migrate",
-    "test": "docker run -d -p 8545:8545 --name testrpc desmart/truffle  && truffle test",
+    "test": "docker run -d -p 8545:8545 --name testrpc wbuchwalter/testrpc  && truffle test",
     "posttest": "docker stop testrpc"
   },
   "repository": {
@@ -52,7 +52,9 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "truffle": "^3.0.2",
+    "web3": "^0.18.2"
  
   }
 }
