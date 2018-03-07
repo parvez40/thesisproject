@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - setup-docker-engine
-      - setup_remote_docker
+      #- setup_remote_docker
       - run:
              name: docker group
              command: sudo groupadd docker
