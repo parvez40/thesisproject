@@ -26,9 +26,9 @@ jobs:
      # - run: 
      #       name: nodesync
       #      command: node scripts/waitForEthSync.js
-      - run: 
-            name: migrate
-            command: truffle migrate
+      #- run: 
+      #      name: migrate
+      #      command: truffle migrate
       - run: 
             name: test
             command: npm test
