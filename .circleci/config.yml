@@ -16,8 +16,8 @@ jobs:
              command: sudo usermod -aG docker $(whoami)
      
       - run:
-            name: docker service
-            command: sudo docker service stop
+            name: docker service stop
+            command: sudo service docker start
       - run:
             name: docker daemon running
             command: sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
