@@ -9,7 +9,8 @@ jobs:
       - checkout
      # - run: sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
       - run:
-            name: genesis
-            command: sudo docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
+            commands: 
+            - sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
+            - sudo docker run -it -v $(pwd):/app ethereum/client-go --datadir /app/geth/data init /app/genesis.json
       
             
